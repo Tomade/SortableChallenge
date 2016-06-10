@@ -1,11 +1,12 @@
 # SortableChallenge.py
 
-***
+
 ## Introduction
 This code addresses the programming challenge issued by Sortable (http://sortable.com/challenge/). It can be run
 under either Python 2.x or 3.x. It assumes availability of the files "listings.txt" and "products.txt" in the same
-location it runs from.
-***
+location it runs from. To execute, issue the command "python
+SortableChallenge.py" from a shell, or "chmod +x SortableChallenge.py; ./SortableChallenge.py".
+
 ## Algorithm overview:
 Product and listing files are read into memory and allocated into lists of standard Python dictionaries, using
 the standard json module. The resulting lists are then sorted by manufacturer + product name and processed ("merged")
