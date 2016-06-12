@@ -29,6 +29,7 @@
 #######################################################################################################################
 
 import json
+import re
 
 decoder = json.JSONDecoder()
 encoder = json.JSONEncoder()
@@ -52,10 +53,9 @@ with open("listings.txt") as l:
 listings.sort(key=lambda l: (l["manufacturer"] + "||" + l["title"]).lower())
 
 output = []
-px = lx = 0
+lx = 0
 try:
-    for px in range(len(products)):
-        p = products[px]
+    for p in products:
         p_listings = []
         brand = p["manufacturer"].lower()
         name = p["product_name"].lower()
@@ -70,7 +70,8 @@ try:
                 lx += 1
 
             # fetch all following listings for this product
-            while name in listings[lx]["title"].lower():
+            pattern = r"\b%s\b" % name
+            while re.search(pattern, listings[lx]["title"].lower()):
                 p_listings.append(listings[lx])
                 lx += 1
 
